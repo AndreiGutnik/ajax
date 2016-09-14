@@ -1,0 +1,37 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <title>Главная страница</title>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	<meta name="description" content="" />
+    <meta name="keywords" content="" />
+    
+    <script type="text/javascript" src="js/jquery-3.1.0.min.js"></script>
+    <script type="text/javascript" src="js/jquery.form.js"></script>
+    
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $("#myForm").ajaxForm({
+                dataType: "json",
+                success: function(data){
+                    $("#inp2").val(data.id);
+                    $("#text").text(data.title + " " + data.link + " " + data.ter);
+                }       
+            });
+        });
+           
+    </script>
+	
+</head>
+<body>
+
+    <form id="myForm" action="ajax2.php" method="post">
+        <p>Введите число:</p>
+        <p><input type="text" id="inp1" name="ter" /><input type="submit" id="sub" value="Отправить" /></p>
+    </form>
+    <p>Результат обработки запроса:</p>
+    <p><input type="text" id="inp2" /></p>
+    <p id="text"></p>
+
+</body>
+</html>
